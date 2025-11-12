@@ -90,3 +90,10 @@ sync.sh
 
 copy-from.sh
 copy-to.sh
+
+
+#custom
+.env
+/docker-data
+/oldcode
+

@@ -7,9 +7,11 @@ use App\Http\Controllers\Frontend\CreditsController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\DownloadController;
 use App\Http\Controllers\Frontend\FlightController;
+use App\Http\Controllers\Frontend\FlightSchoolController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\LiveMapController;
+use App\Http\Controllers\Frontend\FleetController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PirepController;
 use App\Http\Controllers\Frontend\ProfileController;
@@ -80,6 +82,9 @@ Route::group([
     Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
     Route::get('credits', [CreditsController::class, 'index'])->name('credits');
+    Route::get('flightschool', [FlightSchoolController::class, 'index'])->name('flightschool.index');
+    Route::get('flightschool/program', [FlightSchoolController::class, 'program'])->name('flightschool.program');
+    Route::get('fleet', [FleetController::class, 'index'])->name('fleet.index');
 });
 
 Route::group([
