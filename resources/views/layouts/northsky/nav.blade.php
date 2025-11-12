@@ -29,7 +29,9 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('frontend.flights.index') }}">{{ trans_choice('common.flight', 2) }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('frontend.fleet.index') }}">Fleet</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('frontend.pireps.index') }}">{{ trans_choice('common.pirep', 2) }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('frontend.downloads.index') }}">{{ trans_choice('common.download', 2) }}</a></li>
+                @auth
+                    <li class="nav-item"><a class="nav-link" href="{{ route('frontend.downloads.index') }}">{{ trans_choice('common.download', 2) }}</a></li>
+                @endauth
             </ul>
         </div>
 
