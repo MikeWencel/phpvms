@@ -1,0 +1,13 @@
+# Exclude runtime and local files from build context
+node_modules
+vendor
+.git
+.gitignore
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+docker-compose*.yaml
+# Runtime data and volumes
+/docker-data
+/public/build
+/storage
