@@ -4,13 +4,13 @@ services:
   app:
     container_name: phpvms-app
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: ghcr.io/phpvms/phpvms:main
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   args:
-    #     WWWUSER: "${WWWUSER:-1000}"
-    #     WWWGROUP: "${WWWGROUP:-1000}"
+    # image: ghcr.io/phpvms/phpvms:main
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WWWUSER: "${WWWUSER:-1000}"
+        WWWGROUP: "${WWWGROUP:-1000}"
     hostname: app
     restart: unless-stopped
     environment:
@@ -23,6 +23,7 @@ services:
       - ./modules:/var/www/html/modules:ro
       - phpvms_uploads:/var/www/html/public/uploads:rw
       - phpvms_storage:/var/www/html/storage:rw
+      - ./resources/views/scripts:/var/www/html/resources/views/scripts:ro
     depends_on:
       - mariadb
       - redis
@@ -32,13 +33,13 @@ services:
   task:
     container_name: phpvms-task
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: ghcr.io/phpvms/phpvms:main
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   args:
-    #     WWWUSER: "${WWWUSER:-1000}"
-    #     WWWGROUP: "${WWWGROUP:-1000}"
+    # image: ghcr.io/phpvms/phpvms:main
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WWWUSER: "${WWWUSER:-1000}"
+        WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: ["php", "/var/www/html/artisan", "schedule:work"]
     environment:
@@ -60,13 +61,13 @@ services:
   queue:
     container_name: phpvms-queue
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: ghcr.io/phpvms/phpvms:main
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   args:
-    #     WWWUSER: "${WWWUSER:-1000}"
-    #     WWWGROUP: "${WWWGROUP:-1000}"
+    # image: ghcr.io/phpvms/phpvms:main
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WWWUSER: "${WWWUSER:-1000}"
+        WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: [ "php", "/var/www/html/artisan", "queue:work", "--tries=3" ]
     environment:
