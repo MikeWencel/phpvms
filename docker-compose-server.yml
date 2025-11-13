@@ -4,13 +4,13 @@ services:
   app:
     container_name: phpvms-app
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    # image: ghcr.io/phpvms/phpvms:main
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        WWWUSER: "${WWWUSER:-1000}"
-        WWWGROUP: "${WWWGROUP:-1000}"
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     hostname: app
     restart: unless-stopped
     environment:
@@ -19,9 +19,9 @@ services:
       AUTORUN_ENABLED: 1
     env_file: .env
     volumes:
-      - ./docker-data/phpvms_assets:/var/www/html/public/build:rw
+      - phpvms_assets:/var/www/html/public/build:rw
       - ./modules:/var/www/html/modules:ro
-      - ./docker-data/phpvms_uploads:/var/www/html/public/uploads:rw
+      - phpvms_uploads:/var/www/html/public/uploads:rw
       - phpvms_storage:/var/www/html/storage:rw
     depends_on:
       - mariadb
@@ -32,13 +32,13 @@ services:
   task:
     container_name: phpvms-task
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    # image: ghcr.io/phpvms/phpvms:main
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        WWWUSER: "${WWWUSER:-1000}"
-        WWWGROUP: "${WWWGROUP:-1000}"
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: ["php", "/var/www/html/artisan", "schedule:work"]
     environment:
@@ -50,7 +50,7 @@ services:
     env_file: .env
     volumes:
       - ./modules:/var/www/html/modules:ro
-      - ./docker-data/phpvms_uploads:/var/www/html/public/uploads:rw
+      - phpvms_uploads:/var/www/html/public/uploads:rw
       - phpvms_storage:/var/www/html/storage:rw
     depends_on:
       - app
@@ -60,13 +60,13 @@ services:
   queue:
     container_name: phpvms-queue
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    # image: ghcr.io/phpvms/phpvms:main
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        WWWUSER: "${WWWUSER:-1000}"
-        WWWGROUP: "${WWWGROUP:-1000}"
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: [ "php", "/var/www/html/artisan", "queue:work", "--tries=3" ]
     environment:
@@ -78,27 +78,24 @@ services:
     env_file: .env
     volumes:
       - ./modules:/var/www/html/modules:ro
-      - ./docker-data/phpvms_uploads:/var/www/html/public/uploads:rw
-      - ./docker-data/phpvms_storage:/var/www/html/storage:rw
+      - phpvms_uploads:/var/www/html/public/uploads:rw
+      - phpvms_storage:/var/www/html/storage:rw
     depends_on:
       - app
     networks:
       - phpvms
 
-  caddy:
-    container_name: phpvms-caddy
-    image: caddy:2
+  nginx:
+    container_name: phpvms-nginx
+    image: nginx:alpine
     restart: unless-stopped
-    env_file: .env
-    # ports:
-    #   - "${FORWARD_HTTP_PORT:-80}:80"
-    #   - "${FORWARD_HTTPS_PORT:-443}:443"
+    depends_on:
+      - app
     volumes:
-      - ./public/:/var/www/html/public
-      - ./docker-data/phpvms_assets:/var/www/html/public/build
-      - ./resources/docker/Caddyfile:/etc/caddy/Caddyfile
-      - ./docker-data/caddy_config:/config
-      - ./docker-data/caddy_data:/data
+      - ./public/:/var/www/html/public:ro
+      - phpvms_assets:/var/www/html/public/build:ro
+      - phpvms_uploads:/var/www/html/public/uploads:ro
+      - ./resources/docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - default
       - phpvms
@@ -112,10 +109,10 @@ services:
     # ports:
     #   - '${FORWARD_DB_PORT:-3306}:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-      MYSQL_DATABASE: '${DB_DATABASE}'
-      MYSQL_USER: '${DB_USERNAME}'
-      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: 'hello'
+      MYSQL_DATABASE: 'hello'
+      MYSQL_USER: 'hello'
+      MYSQL_PASSWORD: 'hello'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
     volumes:
       - ./docker-data/mariadb:/var/lib/mysql
@@ -143,8 +140,8 @@ services:
 
 volumes:
   caddy_config:
-  # phpvms_assets:
-  # phpvms_uploads:
+  phpvms_assets:
+  phpvms_uploads:
   phpvms_storage:
 
 networks:
