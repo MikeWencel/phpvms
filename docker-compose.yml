@@ -4,7 +4,13 @@ services:
   app:
     container_name: phpvms-app
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: phpvms-local:latest
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     hostname: app
     restart: unless-stopped
     environment:
@@ -27,7 +33,13 @@ services:
   task:
     container_name: phpvms-task
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: phpvms-local:latest
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: ["php", "/var/www/html/artisan", "schedule:work"]
     environment:
@@ -47,7 +59,13 @@ services:
   queue:
     container_name: phpvms-queue
     user: "${WWWUSER:-1000}:${WWWGROUP:-1000}"
-    image: phpvms-local:latest
+    image: ghcr.io/phpvms/phpvms:main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     WWWUSER: "${WWWUSER:-1000}"
+    #     WWWGROUP: "${WWWGROUP:-1000}"
     restart: unless-stopped
     command: [ "php", "/var/www/html/artisan", "queue:work", "--tries=3" ]
     environment:
