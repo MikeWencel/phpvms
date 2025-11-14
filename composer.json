@@ -158,7 +158,7 @@
             "@php artisan package:discover --ansi",
             "@php artisan phpvms:caches",
             "@php artisan filament:upgrade",
-            ".hooks/setup-git-hooks.sh"
+            "@php -r \"if (DIRECTORY_SEPARATOR === '/' && is_dir(__DIR__.'/.git') && file_exists(__DIR__.'/.hooks/setup-git-hooks.sh')) { passthru('sh ' . escapeshellarg(__DIR__.'/.hooks/setup-git-hooks.sh'), \\$code); if (\\$code !== 0) { exit(\\$code); } } else { echo 'Skipping Git hook setup (missing .git directory or non-Unix environment).'.PHP_EOL; }\""
         ],
         "post-update-cmd": [
           "Illuminate\\Foundation\\ComposerScripts::postUpdate",

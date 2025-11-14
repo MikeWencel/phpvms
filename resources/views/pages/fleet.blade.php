@@ -114,7 +114,7 @@
     {{-- Description block --}}
     <div class="text-center mt-5 px-3 px-md-5">
         <p class="lead text-light">
-            <strong>North Sky VA</strong> operates a carefully selected fleet of light jets and midsize aircraft designed for short and medium-haul missions across Europe.
+            <strong>Golden Jet VA</strong> operates a carefully selected fleet of light jets and midsize aircraft designed for short and medium-haul missions across Europe.
             These aircraft are not just machines - they represent the premium world of executive charter aviation.
         </p>
         <p class="text-light small">

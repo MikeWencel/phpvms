@@ -91,7 +91,7 @@
         <div class="northsky-hero__video northsky-hero__video--desktop">
             <iframe
                 src="https://www.youtube.com/embed/xMpSKztYoMw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&start=18&playlist=xMpSKztYoMw&modestbranding=1&playsinline=1"
-                title="North Sky Citation" frameborder="0"
+                title="Golden Jet Citation" frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
             </iframe>
         </div>
@@ -105,7 +105,7 @@
         <div class="northsky-hero__overlay"></div>
         <div class="container position-relative" style="z-index: 3;">
             <div class="mx-auto northsky-glow rounded-4 p-5 text-light" style="max-width: 720px;">
-                <p class="text-uppercase text-warning mb-2">North Sky Virtual Airline</p>
+                <p class="text-uppercase text-warning mb-2">Golden Jet Virtual</p>
                 <h1 class="display-4 fw-bold mb-3">Business Aviation. Elevated.</h1>
                 <p class="lead text-light mb-4">
                     From short-field approaches in the CJ4 to trans-European hops in the Longitude and high-speed runs in the Citation X,
@@ -138,7 +138,7 @@
                     <div class="fleet-card rounded-4 p-4 h-100">
                         <p class="text-warning text-uppercase small mb-1">Super-Midsize</p>
                         <h3 class="h4 text-white">Cessna Citation Longitude</h3>
-                        <p class="small text-muted mb-3">Cross-continent luxury with eight seats and a bespoke North Sky interior set.</p>
+                        <p class="small text-muted mb-3">Cross-continent luxury with eight seats and a bespoke Golden Jet interior set.</p>
                         <ul class="list-unstyled mb-0 text-white-50 small">
                             <li>• 3,500 nm range</li>
                             <li>• Dispatch profiles for extended ops</li>
@@ -166,7 +166,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="text-warning mb-3">North Sky Flight School</h2>
+                    <h2 class="text-warning mb-3">Golden Jet Flight School</h2>
                     <p class="lead text-white-75">
                         Our academy moves you from type-rated intros to advanced jet handling and scenario-based SOP refreshers.
                         Live workshops, shared cockpit mentoring, and curated MSFS/VATSIM briefs keep every sortie sharp.

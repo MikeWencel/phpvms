@@ -91,7 +91,7 @@
                     Join Flight School on Discord
                 </a>
                 <a href="{{ url('/register') }}" class="btn btn-outline-warning">
-                    Join North Sky Virtual Airline
+                    Join Golden Jet Virtual
                 </a>
             </div>
         </div>

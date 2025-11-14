@@ -14,7 +14,7 @@
 <nav class="navbar navbar-dark northsky-nav shadow-sm" data-bs-theme="dark">
     <div class="container d-flex align-items-center justify-content-between gap-3">
         <a class="navbar-brand text-uppercase fw-semibold mb-0" href="{{ url('/') }}">
-            NorthSky <span class="text-warning">VA</span>
+            Golden Jet <span class="text-warning">VA</span>
         </a>
         <div class="d-none d-lg-flex flex-grow-1 justify-content-center">
             <ul class="nav nav-pills northsky-inline-nav">

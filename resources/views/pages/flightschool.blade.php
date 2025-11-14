@@ -1,12 +1,12 @@
 @extends('app')
 
-@section('title', 'North Sky Flight School')
+@section('title', 'Golden Jet Flight School')
 
 @section('content')
 <section class="bg-dark text-light rounded-4 overflow-hidden">
     <header class="text-center text-white" style="background-image: url('{{ asset('images/flightschool/airbus_night.jpg') }}'); background-size: cover; background-position: center;">
         <div class="py-5" style="background-color: rgba(0,0,0,0.65);">
-            <h1 class="display-4 text-warning">North Sky Flight School</h1>
+            <h1 class="display-4 text-warning">Golden Jet Flight School</h1>
             <p class="lead">Your journey from first circuit to airline-level realism starts here.</p>
             @guest
                 <a href="{{ route('register') }}" class="btn btn-warning btn-lg mt-3">Join and Start Training</a>
