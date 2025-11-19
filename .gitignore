@@ -89,3 +89,10 @@ sync.sh
 
 copy-from.sh
 copy-to.sh
+
+/vmsacars
+vmsacars-*.zip
+docker-compose-server.yml
+docker-compose-server-caddy.yml
+
+/docker-data
