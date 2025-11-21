@@ -33,6 +33,10 @@ function buildFrontendAssets()
   mix.sass('resources/sass/now-ui/now-ui-kit.scss', 'public/assets/frontend/css/now-ui-kit.css')
     .sourceMaps();
 
+  mix.sass('resources/sass/frontend/styles.scss', 'public/assets/frontend/css/northsky.css')
+    .options({ processCssUrls: false })
+    .sourceMaps();
+
   mix.scripts([
     'node_modules/moment/moment.js',
     'node_modules/popper.js/dist/umd/popper.js',

@@ -162,6 +162,11 @@ class RouteServiceProvider extends ServiceProvider
 
                 Route::get('page/{slug}', 'PageController@show')->name('pages.show');
 
+                // NorthSky marketing pages
+                Route::view('fleet', 'pages.fleet')->name('fleet.index');
+                Route::view('flightschool', 'pages.flightschool')->name('flightschool.index');
+                Route::view('flightschool/program', 'pages.flightschool_program')->name('flightschool.program');
+
                 Route::get('profile/{id}', 'ProfileController@show')->name('profile.show.public');
 
                 Route::get('users', 'UserController@index')->name('users.index');

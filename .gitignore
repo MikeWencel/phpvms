@@ -96,3 +96,5 @@ docker-compose-server.yml
 docker-compose-server-caddy.yml
 
 /docker-data
+/resources/docker/nginx-local.conf
+/old-code
